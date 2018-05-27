@@ -9959,18 +9959,22 @@ Exact division.  That is, the result is known to be an integer.
 
 Result of integer division, rounded towards negative
 infinity.
+The divisor is known to be positive.
 
 =item C<isl_ast_op_pdiv_q>
 
 Result of integer division, where dividend is known to be non-negative.
+The divisor is known to be positive.
 
 =item C<isl_ast_op_pdiv_r>
 
 Remainder of integer division, where dividend is known to be non-negative.
+The divisor is known to be positive.
 
 =item C<isl_ast_op_zdiv_r>
 
 Equal to zero iff the remainder on integer division is zero.
+The divisor is known to be positive.
 
 =item C<isl_ast_op_cond>
 
@@ -10139,7 +10143,10 @@ the context of an C<isl_ast_build>.
 
 The function C<isl_ast_expr_address_of> can be applied to an
 C<isl_ast_expr> of type C<isl_ast_op_access> only. It is meant
-to represent the address of the C<isl_ast_expr_access>. The function
+to represent the address of the C<isl_ast_expr_access>.
+The second argument of the functions C<isl_ast_expr_pdiv_q> and
+C<isl_ast_expr_pdiv_r> should always evaluate to a positive number.
+The function
 C<isl_ast_expr_and_then> as well as C<isl_ast_expr_or_else> are short-circuit
 versions of C<isl_ast_expr_and> and C<isl_ast_expr_or>, respectively.
 
@@ -10167,7 +10174,7 @@ versions of C<isl_ast_expr_and> and C<isl_ast_expr_or>, respectively.
 		__isl_keep isl_ast_build *build,
 		__isl_take isl_multi_pw_aff *mpa);
 
-The set <set> and
+The set C<set> and
 the domains of C<pa>, C<mpa> and C<pma> should correspond
 to the schedule space of C<build>.
 The tuple id of C<mpa> or C<pma> is used as the array being accessed or
@@ -10363,6 +10370,10 @@ A block will always be printed by setting the following option.
 	isl_stat isl_options_set_ast_build_group_coscheduled(
 		isl_ctx *ctx, int val);
 	int isl_options_get_ast_build_group_coscheduled(
+		isl_ctx *ctx);
+	isl_stat isl_options_set_ast_build_separation_bounds(
+		isl_ctx *ctx, int val);
+	int isl_options_get_ast_build_separation_bounds(
 		isl_ctx *ctx);
 	isl_stat isl_options_set_ast_build_scale_strides(
 		isl_ctx *ctx, int val);
