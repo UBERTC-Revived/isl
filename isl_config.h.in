@@ -127,6 +127,9 @@
 /* Return type of HandleTopLevelDeclReturn */
 #undef HandleTopLevelDeclReturn
 
+/* Define to InputKind::C for newer versions of clang */
+#undef IK_C
+
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 #undef LT_OBJDIR
 
@@ -150,6 +153,9 @@
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
+
+/* Defined if CompilerInstance::setInvocation takes a shared_ptr */
+#undef SETINVOCATION_TAKES_SHARED_PTR
 
 /* Define if CompilerInvocation::setLangDefaults takes 5 arguments */
 #undef SETLANGDEFAULTS_TAKES_5_ARGUMENTS
